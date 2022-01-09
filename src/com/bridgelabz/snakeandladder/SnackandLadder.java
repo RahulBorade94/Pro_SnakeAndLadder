@@ -58,7 +58,7 @@ public class SnackandLadder {
 
     public static void main(String[] args) {
         //Displaying Welcome Message
-        System.out.println("Welcome to Snake and Ladder Simulator Problem Developed");
+        System.out.println("Welcome to Snake and Ladder Simulator Problem");
 
         //Creating Object for Player
         SnackandLadder player1 = new SnackandLadder();
