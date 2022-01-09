@@ -11,14 +11,14 @@ public class SnackandLadder {
     //Declaring Variables for Players Position
     int playerPosition = 0;
     int diceCount = 0;
-
+    int dieNo = 0;
     // Random Class Object for Generating Random Numbers
     Random randomNo = new Random();
 
     //Method to Show Player Current Position
-    private void showPosition() {
+    private void showPosition(String playerNo) {
         //Displaying Player Position
-        System.out.println("Player Starting Position : "+ playerPosition);
+        System.out.println("Player "+playerNo+" Position : "+ playerPosition);
     }
 
     //Method to Roll the Die and Get No between 1 to 6
@@ -63,23 +63,40 @@ public class SnackandLadder {
 
     public static void main(String[] args) {
         //Displaying Welcome Message
-        System.out.println("Welcome to Snake and Ladder Simulator Problem Developed by Tahir Mansuri.");
+        System.out.println("Welcome to Snake and Ladder Simulator Problem.");
 
         //Creating Object for Player
         SnackandLadder player1 = new SnackandLadder();
+        SnackandLadder player2 = new SnackandLadder();
 
         //Showing Player Position
-        player1.showPosition();
+        player2.showPosition("1");
+        player1.showPosition("2");
 
         //Iterating upto Player got Position 100
-        while( player1.playerPosition != 100) {
+        while( player1.playerPosition != 100 && player2.playerPosition != 100) {
             //Show Die Rolling No
-            int dieNo = player1.rollDie();
-            System.out.println("Die Number for Player : "+ dieNo);
+            player1.dieNo = player1.rollDie();
+            System.out.println("Die Number for Player1 : "+ player1.dieNo);
 
             //Player going for Options
-            player1.optionPlay(dieNo);
-            player1.showPosition();
+            player1.optionPlay(player1.dieNo);
+            player1.showPosition("1");
+
+            //Show Die Rolling No
+            player2.dieNo = player2.rollDie();
+            System.out.println("Die Number for Player2 : "+ player2.dieNo);
+
+            //Player going for Options
+            player2.optionPlay(player2.dieNo);
+            player2.showPosition("2");
+
+            //Checking for the WINING Possibility among 2 Players
+            if(player1.playerPosition == 100) {
+                System.out.println("Player 1 WON THE GAME!!!");
+            } else {
+                System.out.println("Player 2 WON THE GAME!!!");
+            }
         }
     }
 }
